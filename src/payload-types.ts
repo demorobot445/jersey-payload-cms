@@ -59,36 +59,36 @@ export interface Media {
 export interface Product {
   id: string;
   name: string;
-  quantityBasedPrices?:
-    | {
-        quantity: number;
-        price: number;
-        id?: string | null;
-      }[]
-    | null;
-  sizes?:
-    | {
-        name: string;
-        id?: string | null;
-      }[]
-    | null;
   previewImage: string | Media;
   model: string | Media;
-  patterns?:
-    | {
-        name: string;
-        icon: string | Media;
-        patternSvg: string | Media;
-        colorOptions?:
-          | {
-              svgColorId: string;
-              defaultColorHexCode: string;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-      }[]
-    | null;
+  controls?: {
+    imageUploadActive?: boolean | null;
+    libraryActive?: boolean | null;
+    textActive?: boolean | null;
+    playerDetailActive?: boolean | null;
+  };
+  quantityBasedPrices: {
+    quantity: number;
+    price: number;
+    id?: string | null;
+  }[];
+  sizes: {
+    name: string;
+    id?: string | null;
+  }[];
+  patterns: {
+    name: string;
+    icon: string | Media;
+    patternSvg: string | Media;
+    colorOptions?:
+      | {
+          svgColorId: string;
+          defaultColorHexCode: string;
+          id?: string | null;
+        }[]
+      | null;
+    id?: string | null;
+  }[];
   updatedAt: string;
   createdAt: string;
 }
