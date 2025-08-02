@@ -28,6 +28,68 @@ const Products: CollectionConfig = {
       required: true,
     },
     {
+      name: "presetImage",
+      type: "group",
+      admin: { position: "sidebar" },
+      fields: [
+        {
+          type: "row",
+          fields: [
+            {
+              admin: { width: "50%" },
+              label: "Position X Axis",
+              name: "positionX",
+              type: "number",
+              required: true,
+            },
+            {
+              admin: { width: "50%" },
+              label: "Position Y Axis",
+              name: "positionY",
+              type: "number",
+              required: true,
+            },
+          ],
+        },
+        {
+          name: "scale",
+          type: "number",
+          required: true,
+        },
+      ],
+    },
+    {
+      name: "presetText",
+      type: "group",
+      admin: { position: "sidebar" },
+      fields: [
+        {
+          type: "row",
+          fields: [
+            {
+              admin: { width: "50%" },
+              label: "Position X Axis",
+              name: "positionX",
+              type: "number",
+              required: true,
+            },
+            {
+              admin: { width: "50%" },
+              label: "Position Y Axis",
+              name: "positionY",
+              type: "number",
+              required: true,
+            },
+          ],
+        },
+        {
+          name: "textSize",
+          type: "number",
+          required: true,
+        },
+      ],
+    },
+    {
       name: "controls",
       type: "group",
       admin: { position: "sidebar" },
@@ -49,6 +111,11 @@ const Products: CollectionConfig = {
         },
         {
           name: "playerDetailActive",
+          type: "checkbox",
+          defaultValue: true,
+        },
+        {
+          name: "addToCartActive",
           type: "checkbox",
           defaultValue: true,
         },

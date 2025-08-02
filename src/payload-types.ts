@@ -61,11 +61,22 @@ export interface Product {
   name: string;
   previewImage: string | Media;
   model: string | Media;
+  presetImagePositions: {
+    positionX: number;
+    positionY: number;
+    scale: number;
+  };
+  presetTextPositions: {
+    positionX: number;
+    positionY: number;
+    textSize: number;
+  };
   controls?: {
     imageUploadActive?: boolean | null;
     libraryActive?: boolean | null;
     textActive?: boolean | null;
     playerDetailActive?: boolean | null;
+    addToCartActive?: boolean | null;
   };
   quantityBasedPrices: {
     quantity: number;
