@@ -14,6 +14,8 @@ export interface Config {
     categories: Category;
     'library-main-categories': LibraryMainCategory;
     'library-sub-categories': LibrarySubCategory;
+    colors: Color;
+    'color-pallets': ColorPallet;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -61,12 +63,13 @@ export interface Product {
   name: string;
   previewImage: string | Media;
   model: string | Media;
-  presetImagePositions: {
+  colorPallet: string | ColorPallet;
+  presetImage: {
     positionX: number;
     positionY: number;
     scale: number;
   };
-  presetTextPositions: {
+  presetText: {
     positionX: number;
     positionY: number;
     textSize: number;
@@ -100,6 +103,28 @@ export interface Product {
       | null;
     id?: string | null;
   }[];
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "color-pallets".
+ */
+export interface ColorPallet {
+  id: string;
+  name: string;
+  colors: (string | Color)[];
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "colors".
+ */
+export interface Color {
+  id: string;
+  name: string;
+  hexCode: string;
   updatedAt: string;
   createdAt: string;
 }

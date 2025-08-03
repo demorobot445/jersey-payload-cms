@@ -11,6 +11,8 @@ import Products from "./collections/Products";
 import LibraryMainCategories from "./collections/LibraryMainCategories";
 import LibrarySubCategories from "./collections/LibrarySubCategories";
 import Categories from "./collections/Categories";
+import Colors from "./collections/Colors";
+import ColorPallets from "./collections/ColorPallets";
 
 export default buildConfig({
   admin: {
@@ -25,6 +27,8 @@ export default buildConfig({
     Categories,
     LibraryMainCategories,
     LibrarySubCategories,
+    Colors,
+    ColorPallets,
   ],
   globals: [],
   typescript: {

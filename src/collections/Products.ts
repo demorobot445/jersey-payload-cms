@@ -28,6 +28,13 @@ const Products: CollectionConfig = {
       required: true,
     },
     {
+      name: "colorPallet",
+      type: "relationship",
+      relationTo: "color-pallets",
+      required: true,
+      admin: { position: "sidebar" },
+    },
+    {
       name: "presetImage",
       type: "group",
       admin: { position: "sidebar" },

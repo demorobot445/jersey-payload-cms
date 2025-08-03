@@ -37,6 +37,7 @@ const Categories: CollectionConfig = {
           type: "relationship",
           relationTo: "products",
           hasMany: true,
+          required: true,
         },
       ],
     },
