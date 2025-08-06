@@ -63,23 +63,63 @@ export interface Product {
   name: string;
   previewImage: string | Media;
   model: string | Media;
-  colorPallet: string | ColorPallet;
-  presetImage: {
+  colorPallets: {
+    modelColorPallet: string | ColorPallet;
+    libraryColorPallet: string | ColorPallet;
+    textColorPallet: string | ColorPallet;
+  };
+  controls?: {
+    rightChestActive?: boolean | null;
+    leftChestActive?: boolean | null;
+    centerChestActive?: boolean | null;
+    backActive?: boolean | null;
+    rightSleeveActive?: boolean | null;
+    leftSleeveActive?: boolean | null;
+    libraryActive?: boolean | null;
+    textActive?: boolean | null;
+    playerDetailActive?: boolean | null;
+    addToCartActive?: boolean | null;
+  };
+  rightChest: {
     positionX: number;
     positionY: number;
     scale: number;
+    rotate: number;
+  };
+  centerChest: {
+    positionX: number;
+    positionY: number;
+    scale: number;
+    rotate: number;
+  };
+  leftChest: {
+    positionX: number;
+    positionY: number;
+    scale: number;
+    rotate: number;
+  };
+  back: {
+    positionX: number;
+    positionY: number;
+    scale: number;
+    rotate: number;
+  };
+  rightSleeve: {
+    positionX: number;
+    positionY: number;
+    scale: number;
+    rotate: number;
+  };
+  leftSleeve: {
+    positionX: number;
+    positionY: number;
+    scale: number;
+    rotate: number;
   };
   presetText: {
     positionX: number;
     positionY: number;
     textSize: number;
-  };
-  controls?: {
-    imageUploadActive?: boolean | null;
-    libraryActive?: boolean | null;
-    textActive?: boolean | null;
-    playerDetailActive?: boolean | null;
-    addToCartActive?: boolean | null;
   };
   quantityBasedPrices: {
     quantity: number;
@@ -140,7 +180,7 @@ export interface Category {
     | {
         title: string;
         image: string | Media;
-        products?: (string | Product)[] | null;
+        products: (string | Product)[];
         id?: string | null;
       }[]
     | null;
