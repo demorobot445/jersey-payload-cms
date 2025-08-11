@@ -1,3 +1,4 @@
+import SingleColorSelect from "../components/SingleColorSelect";
 import { CollectionConfig } from "payload/types";
 
 const Products: CollectionConfig = {
@@ -435,37 +436,6 @@ const Products: CollectionConfig = {
       ],
     },
     {
-      admin: {
-        initCollapsed: true,
-      },
-      name: "quantityBasedPrices",
-      type: "array",
-      minRows: 1,
-      required: true,
-      fields: [
-        {
-          name: "quantity",
-          type: "number",
-          required: true,
-        },
-        {
-          name: "price",
-          type: "number",
-          required: true,
-        },
-      ],
-    },
-    {
-      admin: {
-        initCollapsed: true,
-      },
-      name: "sizes",
-      type: "array",
-      required: true,
-      minRows: 1,
-      fields: [{ name: "name", type: "text", required: true }],
-    },
-    {
       name: "patterns",
       type: "array",
       minRows: 1,
@@ -499,18 +469,60 @@ const Products: CollectionConfig = {
           },
           fields: [
             {
+              name: "title",
+              type: "text",
+              required: true,
+            },
+            {
               name: "svgColorId",
               type: "text",
               required: true,
             },
             {
               name: "defaultColorHexCode",
-              type: "text",
+              type: "relationship",
+              relationTo: "colors",
               required: true,
+              admin: {
+                components: {
+                  Field: SingleColorSelect,
+                },
+              },
             },
           ],
         },
       ],
+    },
+    {
+      admin: {
+        initCollapsed: true,
+      },
+      name: "quantityBasedPrices",
+      type: "array",
+      minRows: 1,
+      required: true,
+      fields: [
+        {
+          name: "quantity",
+          type: "number",
+          required: true,
+        },
+        {
+          name: "price",
+          type: "number",
+          required: true,
+        },
+      ],
+    },
+    {
+      admin: {
+        initCollapsed: true,
+      },
+      name: "sizes",
+      type: "array",
+      required: true,
+      minRows: 1,
+      fields: [{ name: "name", type: "text", required: true }],
     },
   ],
 };

@@ -1,3 +1,4 @@
+import ColorSwatches from "../components/ColorSwatches";
 import { CollectionConfig } from "payload/types";
 
 const ColorPallets: CollectionConfig = {
@@ -18,9 +19,13 @@ const ColorPallets: CollectionConfig = {
       name: "colors",
       type: "relationship",
       relationTo: "colors",
-      hasMany: true,
       required: true,
-      maxDepth: 100,
+      hasMany: true,
+      admin: {
+        components: {
+          Field: ColorSwatches,
+        },
+      },
     },
   ],
 };

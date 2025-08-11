@@ -16,6 +16,7 @@
     "payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload"
   },
   "dependencies": {
+    "@faceless-ui/modal": "^3.0.0-beta.2",
     "@payloadcms/bundler-webpack": "^1.0.7",
     "@payloadcms/db-mongodb": "^1.7.5",
     "@payloadcms/plugin-seo": "^2.4.0",

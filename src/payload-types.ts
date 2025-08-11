@@ -12,12 +12,12 @@ export interface Config {
     media: Media;
     products: Product;
     categories: Category;
-    'library-main-categories': LibraryMainCategory;
-    'library-sub-categories': LibrarySubCategory;
+    "library-main-categories": LibraryMainCategory;
+    "library-sub-categories": LibrarySubCategory;
     colors: Color;
-    'color-pallets': ColorPallet;
-    'payload-preferences': PayloadPreference;
-    'payload-migrations': PayloadMigration;
+    "color-pallets": ColorPallet;
+    "payload-preferences": PayloadPreference;
+    "payload-migrations": PayloadMigration;
   };
   globals: {};
 }
@@ -121,6 +121,20 @@ export interface Product {
     positionY: number;
     textSize: number;
   };
+  patterns: {
+    name: string;
+    icon: string | Media;
+    patternSvg: string | Media;
+    colorOptions?:
+      | {
+          title: string;
+          svgColorId: string;
+          defaultColorHexCode: string | Color;
+          id?: string | null;
+        }[]
+      | null;
+    id?: string | null;
+  }[];
   quantityBasedPrices: {
     quantity: number;
     price: number;
@@ -128,19 +142,6 @@ export interface Product {
   }[];
   sizes: {
     name: string;
-    id?: string | null;
-  }[];
-  patterns: {
-    name: string;
-    icon: string | Media;
-    patternSvg: string | Media;
-    colorOptions?:
-      | {
-          svgColorId: string;
-          defaultColorHexCode: string;
-          id?: string | null;
-        }[]
-      | null;
     id?: string | null;
   }[];
   updatedAt: string;
@@ -176,6 +177,8 @@ export interface Category {
   id: string;
   title: string;
   image: string | Media;
+  subCategoriesActive: boolean;
+  products?: (string | Product)[] | null;
   subCategories?:
     | {
         title: string;
@@ -228,7 +231,7 @@ export interface LibrarySubCategory {
 export interface PayloadPreference {
   id: string;
   user: {
-    relationTo: 'users';
+    relationTo: "users";
     value: string | User;
   };
   key?: string | null;
@@ -256,7 +259,6 @@ export interface PayloadMigration {
   createdAt: string;
 }
 
-
-declare module 'payload' {
+declare module "payload" {
   export interface GeneratedTypes extends Config {}
 }

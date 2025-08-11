@@ -13,11 +13,13 @@ import LibrarySubCategories from "./collections/LibrarySubCategories";
 import Categories from "./collections/Categories";
 import Colors from "./collections/Colors";
 import ColorPallets from "./collections/ColorPallets";
+import Orders from "./collections/Orders";
 
 export default buildConfig({
   admin: {
     user: Users.slug,
     bundler: webpackBundler(),
+    css: path.resolve(__dirname, "styles/stylesheet.scss"),
   },
   editor: slateEditor({}),
   collections: [
@@ -29,6 +31,7 @@ export default buildConfig({
     LibrarySubCategories,
     Colors,
     ColorPallets,
+    Orders,
   ],
   globals: [],
   typescript: {

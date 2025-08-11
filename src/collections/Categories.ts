@@ -18,8 +18,28 @@ const Categories: CollectionConfig = {
       required: true,
     },
     {
+      name: "subCategoriesActive",
+      type: "checkbox",
+      defaultValue: true,
+      required: true,
+    },
+    {
+      name: "products",
+      type: "relationship",
+      relationTo: "products",
+      hasMany: true,
+      required: true,
+      admin: {
+        condition: (_, siblingData) =>
+          siblingData.subCategoriesActive === false,
+      },
+    },
+    {
       name: "subCategories",
       type: "array",
+      admin: {
+        condition: (_, siblingData) => siblingData.subCategoriesActive === true,
+      },
       fields: [
         {
           name: "title",
