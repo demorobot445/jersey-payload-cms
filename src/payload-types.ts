@@ -12,12 +12,13 @@ export interface Config {
     media: Media;
     products: Product;
     categories: Category;
-    "library-main-categories": LibraryMainCategory;
-    "library-sub-categories": LibrarySubCategory;
+    'library-main-categories': LibraryMainCategory;
+    'library-sub-categories': LibrarySubCategory;
     colors: Color;
-    "color-pallets": ColorPallet;
-    "payload-preferences": PayloadPreference;
-    "payload-migrations": PayloadMigration;
+    'color-pallets': ColorPallet;
+    orders: Order;
+    'payload-preferences': PayloadPreference;
+    'payload-migrations': PayloadMigration;
   };
   globals: {};
 }
@@ -69,48 +70,22 @@ export interface Product {
     textColorPallet: string | ColorPallet;
   };
   controls?: {
-    rightChestActive?: boolean | null;
-    leftChestActive?: boolean | null;
-    centerChestActive?: boolean | null;
-    backActive?: boolean | null;
-    rightSleeveActive?: boolean | null;
-    leftSleeveActive?: boolean | null;
     libraryActive?: boolean | null;
     textActive?: boolean | null;
     playerDetailActive?: boolean | null;
     addToCartActive?: boolean | null;
   };
-  rightChest: {
-    positionX: number;
-    positionY: number;
-    scale: number;
-    rotate: number;
-  };
-  centerChest: {
-    positionX: number;
-    positionY: number;
-    scale: number;
-    rotate: number;
-  };
-  leftChest: {
-    positionX: number;
-    positionY: number;
-    scale: number;
-    rotate: number;
-  };
-  back: {
-    positionX: number;
-    positionY: number;
-    scale: number;
-    rotate: number;
-  };
-  rightSleeve: {
-    positionX: number;
-    positionY: number;
-    scale: number;
-    rotate: number;
-  };
-  leftSleeve: {
+  presets?:
+    | {
+        name: string;
+        positionX: number;
+        positionY: number;
+        scale: number;
+        rotate: number;
+        id?: string | null;
+      }[]
+    | null;
+  presetSvgLibrary: {
     positionX: number;
     positionY: number;
     scale: number;
@@ -226,12 +201,69 @@ export interface LibrarySubCategory {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "orders".
+ */
+export interface Order {
+  id: string;
+  name?: string | null;
+  email?: string | null;
+  address?: string | null;
+  city?: string | null;
+  zipcode?: string | null;
+  products?:
+    | {
+        name?: string | null;
+        size?: string | null;
+        playerName?: string | null;
+        playerNumber?: string | null;
+        quantity?: number | null;
+        price?: number | null;
+        previews?:
+          | {
+              image?: string | Media | null;
+              id?: string | null;
+            }[]
+          | null;
+        customization?: {
+          colors?:
+            | {
+                name?: string | null;
+                hexcode?: string | null;
+                id?: string | null;
+              }[]
+            | null;
+          texts?:
+            | {
+                text?: string | null;
+                size?: number | null;
+                font?: string | null;
+                fontColor?: string | null;
+                strokeWidth?: number | null;
+                strokeColor?: string | null;
+                id?: string | null;
+              }[]
+            | null;
+          uploads?:
+            | {
+                image?: string | Media | null;
+                id?: string | null;
+              }[]
+            | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
   id: string;
   user: {
-    relationTo: "users";
+    relationTo: 'users';
     value: string | User;
   };
   key?: string | null;
@@ -259,6 +291,7 @@ export interface PayloadMigration {
   createdAt: string;
 }
 
-declare module "payload" {
+
+declare module 'payload' {
   export interface GeneratedTypes extends Config {}
 }

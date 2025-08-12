@@ -62,57 +62,6 @@ const Products: CollectionConfig = {
           type: "row",
           fields: [
             {
-              name: "rightChestActive",
-              type: "checkbox",
-              defaultValue: true,
-              admin: { width: "50%" },
-            },
-            {
-              name: "leftChestActive",
-              type: "checkbox",
-              defaultValue: true,
-              admin: { width: "50%" },
-            },
-          ],
-        },
-        {
-          type: "row",
-          fields: [
-            {
-              name: "centerChestActive",
-              type: "checkbox",
-              defaultValue: true,
-              admin: { width: "50%" },
-            },
-            {
-              name: "backActive",
-              type: "checkbox",
-              defaultValue: true,
-              admin: { width: "50%" },
-            },
-          ],
-        },
-        {
-          type: "row",
-          fields: [
-            {
-              name: "rightSleeveActive",
-              type: "checkbox",
-              defaultValue: true,
-              admin: { width: "50%" },
-            },
-            {
-              name: "leftSleeveActive",
-              type: "checkbox",
-              defaultValue: true,
-              admin: { width: "50%" },
-            },
-          ],
-        },
-        {
-          type: "row",
-          fields: [
-            {
               name: "libraryActive",
               type: "checkbox",
               defaultValue: true,
@@ -145,291 +94,125 @@ const Products: CollectionConfig = {
         },
       ],
     },
+
     {
-      label: "Presets",
-      type: "collapsible",
-      admin: { position: "sidebar", initCollapsed: true },
+      name: "presets",
+      type: "array",
+      admin: { position: "sidebar" },
       fields: [
         {
-          name: "rightChest",
-          type: "group",
+          name: "name",
+          type: "text",
+          required: true,
+        },
+        {
+          type: "row",
           fields: [
             {
-              type: "row",
-              fields: [
-                {
-                  admin: { width: "50%" },
-                  label: "X Axis",
-                  name: "positionX",
-                  type: "number",
-                  required: true,
-                },
-                {
-                  admin: { width: "50%" },
-                  label: "Y Axis",
-                  name: "positionY",
-                  type: "number",
-                  required: true,
-                },
-              ],
+              admin: { width: "50%" },
+              label: "X Axis",
+              name: "positionX",
+              type: "number",
+              required: true,
             },
             {
-              type: "row",
-              fields: [
-                {
-                  admin: { width: "50%" },
-                  name: "scale",
-                  type: "number",
-                  required: true,
-                },
-                {
-                  admin: { width: "50%" },
-                  name: "rotate",
-                  type: "number",
-                  required: true,
-                },
-              ],
+              admin: { width: "50%" },
+              label: "Y Axis",
+              name: "positionY",
+              type: "number",
+              required: true,
             },
           ],
         },
         {
-          name: "centerChest",
-          type: "group",
+          type: "row",
           fields: [
             {
-              type: "row",
-              fields: [
-                {
-                  admin: { width: "50%" },
-                  label: "X Axis",
-                  name: "positionX",
-                  type: "number",
-                  required: true,
-                },
-                {
-                  admin: { width: "50%" },
-                  label: "Y Axis",
-                  name: "positionY",
-                  type: "number",
-                  required: true,
-                },
-              ],
+              admin: { width: "50%" },
+              name: "scale",
+              type: "number",
+              required: true,
             },
             {
-              type: "row",
-              fields: [
-                {
-                  admin: { width: "50%" },
-                  name: "scale",
-                  type: "number",
-                  required: true,
-                },
-                {
-                  admin: { width: "50%" },
-                  name: "rotate",
-                  type: "number",
-                  required: true,
-                },
-              ],
+              admin: { width: "50%" },
+              name: "rotate",
+              type: "number",
+              required: true,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: "presetSvgLibrary",
+      type: "group",
+      admin: { position: "sidebar" },
+      fields: [
+        {
+          type: "row",
+          fields: [
+            {
+              admin: { width: "50%" },
+              label: "X Axis",
+              name: "positionX",
+              type: "number",
+              required: true,
+            },
+            {
+              admin: { width: "50%" },
+              label: "Y Axis",
+              name: "positionY",
+              type: "number",
+              required: true,
             },
           ],
         },
         {
-          name: "leftChest",
-          type: "group",
+          type: "row",
           fields: [
             {
-              type: "row",
-              fields: [
-                {
-                  admin: { width: "50%" },
-                  label: "X Axis",
-                  name: "positionX",
-                  type: "number",
-                  required: true,
-                },
-                {
-                  admin: { width: "50%" },
-                  label: "Y Axis",
-                  name: "positionY",
-                  type: "number",
-                  required: true,
-                },
-              ],
+              admin: { width: "50%" },
+              name: "scale",
+              type: "number",
+              required: true,
             },
             {
-              type: "row",
-              fields: [
-                {
-                  admin: { width: "50%" },
-                  name: "scale",
-                  type: "number",
-                  required: true,
-                },
-                {
-                  admin: { width: "50%" },
-                  name: "rotate",
-                  type: "number",
-                  required: true,
-                },
-              ],
+              admin: { width: "50%" },
+              name: "rotate",
+              type: "number",
+              required: true,
             },
           ],
         },
+      ],
+    },
+    {
+      name: "presetText",
+      type: "group",
+      admin: { position: "sidebar" },
+      fields: [
         {
-          name: "back",
-          type: "group",
+          type: "row",
           fields: [
             {
-              type: "row",
-              fields: [
-                {
-                  admin: { width: "50%" },
-                  label: "X Axis",
-                  name: "positionX",
-                  type: "number",
-                  required: true,
-                },
-                {
-                  admin: { width: "50%" },
-                  label: "Y Axis",
-                  name: "positionY",
-                  type: "number",
-                  required: true,
-                },
-              ],
+              admin: { width: "50%" },
+              label: "X Axis",
+              name: "positionX",
+              type: "number",
+              required: true,
             },
             {
-              type: "row",
-              fields: [
-                {
-                  admin: { width: "50%" },
-                  name: "scale",
-                  type: "number",
-                  required: true,
-                },
-                {
-                  admin: { width: "50%" },
-                  name: "rotate",
-                  type: "number",
-                  required: true,
-                },
-              ],
-            },
-          ],
-        },
-        {
-          name: "rightSleeve",
-          type: "group",
-          fields: [
-            {
-              type: "row",
-              fields: [
-                {
-                  admin: { width: "50%" },
-                  label: "X Axis",
-                  name: "positionX",
-                  type: "number",
-                  required: true,
-                },
-                {
-                  admin: { width: "50%" },
-                  label: "Y Axis",
-                  name: "positionY",
-                  type: "number",
-                  required: true,
-                },
-              ],
+              admin: { width: "50%" },
+              label: "Y Axis",
+              name: "positionY",
+              type: "number",
+              required: true,
             },
             {
-              type: "row",
-              fields: [
-                {
-                  admin: { width: "50%" },
-                  name: "scale",
-                  type: "number",
-                  required: true,
-                },
-                {
-                  admin: { width: "50%" },
-                  name: "rotate",
-                  type: "number",
-                  required: true,
-                },
-              ],
-            },
-          ],
-        },
-        {
-          name: "leftSleeve",
-          type: "group",
-          fields: [
-            {
-              type: "row",
-              fields: [
-                {
-                  admin: { width: "50%" },
-                  label: "X Axis",
-                  name: "positionX",
-                  type: "number",
-                  required: true,
-                },
-                {
-                  admin: { width: "50%" },
-                  label: "Y Axis",
-                  name: "positionY",
-                  type: "number",
-                  required: true,
-                },
-              ],
-            },
-            {
-              type: "row",
-              fields: [
-                {
-                  admin: { width: "50%" },
-                  name: "scale",
-                  type: "number",
-                  required: true,
-                },
-                {
-                  admin: { width: "50%" },
-                  name: "rotate",
-                  type: "number",
-                  required: true,
-                },
-              ],
-            },
-          ],
-        },
-        {
-          name: "presetText",
-          type: "group",
-          fields: [
-            {
-              type: "row",
-              fields: [
-                {
-                  admin: { width: "50%" },
-                  label: "X Axis",
-                  name: "positionX",
-                  type: "number",
-                  required: true,
-                },
-                {
-                  admin: { width: "50%" },
-                  label: "Y Axis",
-                  name: "positionY",
-                  type: "number",
-                  required: true,
-                },
-                {
-                  admin: { width: "50%" },
-                  name: "textSize",
-                  type: "number",
-                  required: true,
-                },
-              ],
+              admin: { width: "50%" },
+              name: "textSize",
+              type: "number",
+              required: true,
             },
           ],
         },

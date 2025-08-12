@@ -85,8 +85,14 @@ const Orders: CollectionConfig = {
           type: "number",
         },
         {
+          name: "pdf",
+          type: "upload",
+          relationTo: "media",
+        },
+        {
           name: "previews",
           type: "array",
+          admin: { initCollapsed: true },
           fields: [{ name: "image", type: "upload", relationTo: "media" }],
         },
         {
