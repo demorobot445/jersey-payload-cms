@@ -34,6 +34,19 @@ export default buildConfig({
     Orders,
   ],
   globals: [],
+  email: {
+    transportOptions: {
+      host: process.env.SMTP_HOST,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+      port: Number(process.env.SMTP_PORT),
+      secure: true,
+    },
+    fromName: "Sports Wear House Dyo",
+    fromAddress: process.env.SMTP_USER,
+  },
   typescript: {
     outputFile: path.resolve(__dirname, "payload-types.ts"),
   },
