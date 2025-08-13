@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useField, Label } from "payload/components/forms";
-import type { Color } from "payload/generated-types";
+import { useField, Label, useFormFields } from "payload/components/forms";
+import type { Color, ColorPallet } from "payload/generated-types";
 
 type Option = {
   label: string;
@@ -13,36 +13,56 @@ const SingleColorSelect: React.FC<{ path: string; label?: string }> = ({
   label,
 }) => {
   const { value = "", setValue } = useField<string>({ path });
+
+  // Get all form fields
+  const fields = useFormFields(([fields]) => fields);
+
+  // Directly access another field's value
+  const modelColorPalletId = fields?.["colorPallets.modelColorPallet"]?.value;
+
   const [options, setOptions] = useState<Option[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const fetchColors = async () => {
+    if (!modelColorPalletId) {
+      setOptions([]);
+      setLoading(false);
+      return;
+    }
+
+    const fetchPalletColors = async () => {
       try {
-        const res = await fetch("/api/colors?limit=0");
-        const data = await res.json();
+        setLoading(true);
+        const res = await fetch(
+          `/api/color-pallets/${modelColorPalletId}?depth=2`
+        );
+        const pallet = (await res.json()) as ColorPallet;
 
-        const docs = data.docs as Color[];
-
-        const formatted = docs.map((doc) => ({
-          label: doc.name,
-          value: doc.id,
-          color: doc.hexCode,
+        const formatted = (pallet.colors || []).map((color: Color) => ({
+          label: color.name,
+          value: color.id,
+          color: color.hexCode,
         }));
 
         setOptions(formatted);
+
+        // ✅ If current value is not in new options, clear it
+        const isStillValid = formatted.some((opt) => opt.value === value);
+        if (!isStillValid) {
+          setValue(""); // clear
+        }
       } catch (err) {
-        console.error("Failed to fetch colors", err);
+        console.error("Failed to fetch pallet colors", err);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchColors();
-  }, []);
+    fetchPalletColors();
+  }, [modelColorPalletId, value, setValue]);
 
   const handleSelect = (id: string) => {
-    setValue(id); // Only one selected at a time
+    setValue(id);
   };
 
   return (
