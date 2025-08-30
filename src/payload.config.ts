@@ -14,6 +14,7 @@ import Categories from "./collections/Categories";
 import Colors from "./collections/Colors";
 import ColorPallets from "./collections/ColorPallets";
 import Orders from "./collections/Orders";
+import Fonts from "./collections/fonts";
 
 export default buildConfig({
   admin: {
@@ -32,6 +33,7 @@ export default buildConfig({
     Colors,
     ColorPallets,
     Orders,
+    Fonts,
   ],
   globals: [],
   email: {

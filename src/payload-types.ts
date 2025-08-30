@@ -78,6 +78,7 @@ export interface Product {
   presets?:
     | {
         name: string;
+        selectCameraAngle?: ('front' | 'back' | 'left' | 'right') | null;
         positionX: number;
         positionY: number;
         scale: number;
@@ -218,12 +219,7 @@ export interface Order {
         playerNumber?: string | null;
         quantity?: number | null;
         price?: number | null;
-        previews?:
-          | {
-              image?: string | Media | null;
-              id?: string | null;
-            }[]
-          | null;
+        pdf?: string | Media | null;
         customization?: {
           colors?:
             | {

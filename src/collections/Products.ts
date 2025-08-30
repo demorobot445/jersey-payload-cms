@@ -11,301 +11,349 @@ const Products: CollectionConfig = {
   },
   fields: [
     {
-      name: "name",
-      type: "text",
-      required: true,
-    },
-    {
-      name: "previewImage",
-      type: "upload",
-      relationTo: "media",
-      required: true,
-    },
-    {
-      label: "GLB Model",
-      name: "model",
-      type: "upload",
-      relationTo: "media",
-      required: true,
-    },
-    {
-      name: "colorPallets",
-      type: "group",
-      admin: { position: "sidebar" },
-      fields: [
+      type: "tabs",
+      tabs: [
         {
-          name: "modelColorPallet",
-          type: "relationship",
-          relationTo: "color-pallets",
-          required: true,
-        },
-        {
-          name: "libraryColorPallet",
-          type: "relationship",
-          relationTo: "color-pallets",
-          required: true,
-        },
-        {
-          name: "textColorPallet",
-          type: "relationship",
-          relationTo: "color-pallets",
-          required: true,
-        },
-      ],
-    },
-    {
-      name: "controls",
-      type: "group",
-      admin: { position: "sidebar" },
-      fields: [
-        {
-          type: "row",
+          label: "Basic",
           fields: [
             {
-              name: "libraryActive",
-              type: "checkbox",
-              defaultValue: true,
-              admin: { width: "50%" },
+              name: "name",
+              type: "text",
+              required: true,
             },
             {
-              name: "textActive",
-              type: "checkbox",
-              defaultValue: true,
-              admin: { width: "50%" },
-            },
-          ],
-        },
-        {
-          type: "row",
-          fields: [
-            {
-              name: "playerDetailActive",
-              type: "checkbox",
-              defaultValue: true,
-              admin: { width: "50%" },
+              name: "previewImage",
+              type: "upload",
+              relationTo: "media",
+              required: true,
             },
             {
-              name: "addToCartActive",
-              type: "checkbox",
-              defaultValue: true,
-              admin: { width: "50%" },
+              label: "GLB Model",
+              name: "model",
+              type: "upload",
+              relationTo: "media",
+              required: true,
             },
-          ],
-        },
-      ],
-    },
+            {
+              name: "colorPallets",
+              type: "group",
+              fields: [
+                {
+                  name: "modelColorPallet",
+                  type: "relationship",
+                  relationTo: "color-pallets",
+                  required: true,
+                },
+                {
+                  name: "libraryColorPallet",
+                  type: "relationship",
+                  relationTo: "color-pallets",
+                  required: true,
+                },
+                {
+                  name: "textColorPallet",
+                  type: "relationship",
+                  relationTo: "color-pallets",
+                  required: true,
+                },
+              ],
+            },
+            {
+              name: "controls",
+              type: "group",
 
-    {
-      name: "presets",
-      type: "array",
-      admin: { position: "sidebar" },
-      fields: [
-        {
-          name: "name",
-          type: "text",
-          required: true,
-        },
-        {
-          type: "row",
-          fields: [
-            {
-              admin: { width: "50%" },
-              label: "X Axis",
-              name: "positionX",
-              type: "number",
-              required: true,
-            },
-            {
-              admin: { width: "50%" },
-              label: "Y Axis",
-              name: "positionY",
-              type: "number",
-              required: true,
-            },
-          ],
-        },
-        {
-          type: "row",
-          fields: [
-            {
-              admin: { width: "50%" },
-              name: "scale",
-              type: "number",
-              required: true,
-            },
-            {
-              admin: { width: "50%" },
-              name: "rotate",
-              type: "number",
-              required: true,
-            },
-          ],
-        },
-      ],
-    },
-    {
-      name: "presetSvgLibrary",
-      type: "group",
-      admin: { position: "sidebar" },
-      fields: [
-        {
-          type: "row",
-          fields: [
-            {
-              admin: { width: "50%" },
-              label: "X Axis",
-              name: "positionX",
-              type: "number",
-              required: true,
-            },
-            {
-              admin: { width: "50%" },
-              label: "Y Axis",
-              name: "positionY",
-              type: "number",
-              required: true,
+              fields: [
+                {
+                  type: "row",
+                  fields: [
+                    {
+                      name: "libraryActive",
+                      type: "checkbox",
+                      defaultValue: true,
+                      admin: { width: "50%" },
+                    },
+                    {
+                      name: "textActive",
+                      type: "checkbox",
+                      defaultValue: true,
+                      admin: { width: "50%" },
+                    },
+                  ],
+                },
+                {
+                  type: "row",
+                  fields: [
+                    {
+                      name: "playerDetailActive",
+                      type: "checkbox",
+                      defaultValue: true,
+                      admin: { width: "50%" },
+                    },
+                    {
+                      name: "addToCartActive",
+                      type: "checkbox",
+                      defaultValue: true,
+                      admin: { width: "50%" },
+                    },
+                  ],
+                },
+              ],
             },
           ],
         },
         {
-          type: "row",
+          label: "Pattern",
           fields: [
             {
-              admin: { width: "50%" },
-              name: "scale",
-              type: "number",
-              required: true,
-            },
-            {
-              admin: { width: "50%" },
-              name: "rotate",
-              type: "number",
-              required: true,
-            },
-          ],
-        },
-      ],
-    },
-    {
-      name: "presetText",
-      type: "group",
-      admin: { position: "sidebar" },
-      fields: [
-        {
-          type: "row",
-          fields: [
-            {
-              admin: { width: "50%" },
-              label: "X Axis",
-              name: "positionX",
-              type: "number",
-              required: true,
-            },
-            {
-              admin: { width: "50%" },
-              label: "Y Axis",
-              name: "positionY",
-              type: "number",
-              required: true,
-            },
-            {
-              admin: { width: "50%" },
-              name: "textSize",
-              type: "number",
-              required: true,
-            },
-          ],
-        },
-      ],
-    },
-    {
-      name: "patterns",
-      type: "array",
-      minRows: 1,
-      required: true,
-      admin: {
-        initCollapsed: true,
-      },
-      fields: [
-        {
-          name: "name",
-          type: "text",
-          required: true,
-        },
-        {
-          name: "icon",
-          type: "upload",
-          relationTo: "media",
-          required: true,
-        },
-        {
-          name: "patternSvg",
-          type: "upload",
-          relationTo: "media",
-          required: true,
-        },
-        {
-          name: "colorOptions",
-          type: "array",
-          admin: {
-            initCollapsed: true,
-          },
-          fields: [
-            {
-              name: "title",
-              type: "text",
-              required: true,
-            },
-            {
-              name: "svgColorId",
-              type: "text",
-              required: true,
-            },
-            {
-              name: "defaultColorHexCode",
-              type: "relationship",
-              relationTo: "colors",
+              name: "patterns",
+              type: "array",
+              minRows: 1,
               required: true,
               admin: {
-                components: {
-                  Field: SingleColorSelect,
-                },
+                initCollapsed: true,
               },
+              fields: [
+                {
+                  name: "name",
+                  type: "text",
+                  required: true,
+                },
+                {
+                  name: "icon",
+                  type: "upload",
+                  relationTo: "media",
+                  required: true,
+                },
+                {
+                  name: "patternSvg",
+                  type: "upload",
+                  relationTo: "media",
+                  required: true,
+                },
+                {
+                  name: "colorOptions",
+                  type: "array",
+                  admin: {
+                    initCollapsed: true,
+                  },
+                  fields: [
+                    {
+                      name: "title",
+                      type: "text",
+                      required: true,
+                    },
+                    {
+                      name: "svgColorId",
+                      type: "text",
+                      required: true,
+                    },
+                    {
+                      name: "defaultColorHexCode",
+                      type: "relationship",
+                      relationTo: "colors",
+                      required: true,
+                      admin: {
+                        components: {
+                          Field: SingleColorSelect,
+                        },
+                      },
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          label: "Quantity And Size",
+          fields: [
+            {
+              admin: {
+                initCollapsed: true,
+              },
+              name: "quantityBasedPrices",
+              type: "array",
+              minRows: 1,
+              required: true,
+              fields: [
+                {
+                  name: "quantity",
+                  type: "number",
+                  required: true,
+                },
+                {
+                  name: "price",
+                  type: "number",
+                  required: true,
+                },
+              ],
+            },
+            {
+              admin: {
+                initCollapsed: true,
+              },
+              name: "sizes",
+              type: "array",
+              required: true,
+              minRows: 1,
+              fields: [{ name: "name", type: "text", required: true }],
+            },
+          ],
+        },
+        {
+          label: "Preset",
+          fields: [
+            {
+              name: "presets",
+              type: "array",
+              fields: [
+                {
+                  name: "name",
+                  type: "text",
+                  required: true,
+                },
+                {
+                  name: "selectCameraAngle",
+                  type: "select",
+                  defaultValue: "front",
+                  admin: {
+                    isClearable: false,
+                  },
+                  options: [
+                    {
+                      label: "Front",
+                      value: "front",
+                    },
+                    {
+                      label: "Back",
+                      value: "back",
+                    },
+                    {
+                      label: "Left",
+                      value: "left",
+                    },
+                    {
+                      label: "Right",
+                      value: "right",
+                    },
+                  ],
+                },
+                {
+                  type: "row",
+                  fields: [
+                    {
+                      admin: { width: "50%" },
+                      label: "X Axis",
+                      name: "positionX",
+                      type: "number",
+                      required: true,
+                    },
+                    {
+                      admin: { width: "50%" },
+                      label: "Y Axis",
+                      name: "positionY",
+                      type: "number",
+                      required: true,
+                    },
+                  ],
+                },
+                {
+                  type: "row",
+                  fields: [
+                    {
+                      admin: { width: "50%" },
+                      name: "scale",
+                      type: "number",
+                      required: true,
+                    },
+                    {
+                      admin: { width: "50%" },
+                      name: "rotate",
+                      type: "number",
+                      required: true,
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              name: "presetSvgLibrary",
+              type: "group",
+
+              fields: [
+                {
+                  type: "row",
+                  fields: [
+                    {
+                      admin: { width: "50%" },
+                      label: "X Axis",
+                      name: "positionX",
+                      type: "number",
+                      required: true,
+                    },
+                    {
+                      admin: { width: "50%" },
+                      label: "Y Axis",
+                      name: "positionY",
+                      type: "number",
+                      required: true,
+                    },
+                  ],
+                },
+                {
+                  type: "row",
+                  fields: [
+                    {
+                      admin: { width: "50%" },
+                      name: "scale",
+                      type: "number",
+                      required: true,
+                    },
+                    {
+                      admin: { width: "50%" },
+                      name: "rotate",
+                      type: "number",
+                      required: true,
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              name: "presetText",
+              type: "group",
+              // admin: { position: "sidebar" },
+              fields: [
+                {
+                  type: "row",
+                  fields: [
+                    {
+                      admin: { width: "50%" },
+                      label: "X Axis",
+                      name: "positionX",
+                      type: "number",
+                      required: true,
+                    },
+                    {
+                      admin: { width: "50%" },
+                      label: "Y Axis",
+                      name: "positionY",
+                      type: "number",
+                      required: true,
+                    },
+                    {
+                      admin: { width: "50%" },
+                      name: "textSize",
+                      type: "number",
+                      required: true,
+                    },
+                  ],
+                },
+              ],
             },
           ],
         },
       ],
-    },
-    {
-      admin: {
-        initCollapsed: true,
-      },
-      name: "quantityBasedPrices",
-      type: "array",
-      minRows: 1,
-      required: true,
-      fields: [
-        {
-          name: "quantity",
-          type: "number",
-          required: true,
-        },
-        {
-          name: "price",
-          type: "number",
-          required: true,
-        },
-      ],
-    },
-    {
-      admin: {
-        initCollapsed: true,
-      },
-      name: "sizes",
-      type: "array",
-      required: true,
-      minRows: 1,
-      fields: [{ name: "name", type: "text", required: true }],
     },
   ],
 };
