@@ -107,8 +107,6 @@ const Products: CollectionConfig = {
             {
               name: "patterns",
               type: "array",
-              minRows: 1,
-              required: true,
               admin: {
                 initCollapsed: true,
               },

@@ -17,6 +17,7 @@ export interface Config {
     colors: Color;
     'color-pallets': ColorPallet;
     orders: Order;
+    fonts: Font;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -75,6 +76,31 @@ export interface Product {
     playerDetailActive?: boolean | null;
     addToCartActive?: boolean | null;
   };
+  patterns?:
+    | {
+        name: string;
+        icon: string | Media;
+        patternSvg: string | Media;
+        colorOptions?:
+          | {
+              title: string;
+              svgColorId: string;
+              defaultColorHexCode: string | Color;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  quantityBasedPrices: {
+    quantity: number;
+    price: number;
+    id?: string | null;
+  }[];
+  sizes: {
+    name: string;
+    id?: string | null;
+  }[];
   presets?:
     | {
         name: string;
@@ -97,29 +123,6 @@ export interface Product {
     positionY: number;
     textSize: number;
   };
-  patterns: {
-    name: string;
-    icon: string | Media;
-    patternSvg: string | Media;
-    colorOptions?:
-      | {
-          title: string;
-          svgColorId: string;
-          defaultColorHexCode: string | Color;
-          id?: string | null;
-        }[]
-      | null;
-    id?: string | null;
-  }[];
-  quantityBasedPrices: {
-    quantity: number;
-    price: number;
-    id?: string | null;
-  }[];
-  sizes: {
-    name: string;
-    id?: string | null;
-  }[];
   updatedAt: string;
   createdAt: string;
 }
@@ -251,6 +254,24 @@ export interface Order {
     | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "fonts".
+ */
+export interface Font {
+  id: string;
+  name: string;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

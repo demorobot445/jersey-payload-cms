@@ -96,25 +96,23 @@ const Orders: CollectionConfig = {
 
           // Confirmation email to the customer
           if (doc.email) {
-            const res = await req.payload.sendEmail({
+            await req.payload.sendEmail({
               from: `"Sportswear House Dyo" <${process.env.SMTP_USER}>`,
               to: doc.email,
               subject: "Your Order Confirmation",
               html: htmlContent,
               attachments,
             });
-
-            console.log(res);
           }
-          // if (process.env.ADMIN_EMAIL) {
-          //   await req.payload.sendEmail({
-          //     from: `"Sportswear House Dyo" <${process.env.SMTP_USER}>`,
-          //     to: process.env.ADMIN_EMAIL,
-          //     subject: `New Order Received from ${doc.name}`,
-          //     html: htmlContent,
-          //     attachments,
-          //   });
-          // }
+          if (process.env.ADMIN_EMAIL) {
+            await req.payload.sendEmail({
+              from: `"Sportswear House Dyo" <${process.env.SMTP_USER}>`,
+              to: process.env.ADMIN_EMAIL,
+              subject: `New Order Received from ${doc.name}`,
+              html: htmlContent,
+              attachments,
+            });
+          }
         }
       },
     ],
