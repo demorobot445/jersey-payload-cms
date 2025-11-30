@@ -136,25 +136,89 @@ const Products: CollectionConfig = {
                   },
                   fields: [
                     {
+                      name: "isGradient",
+                      type: "checkbox",
+                      label: "Is Gradient?",
+                      defaultValue: false,
+                    },
+
+                    {
                       name: "title",
                       type: "text",
                       required: true,
                     },
+
+                    // -----------------------------
+                    // NON-GRADIENT: Solid Fill Setup
+                    // -----------------------------
                     {
                       name: "svgColorId",
+                      label: "SVG Color Group ID",
                       type: "text",
                       required: true,
+                      admin: {
+                        condition: (_, siblingData) => !siblingData?.isGradient,
+                      },
                     },
                     {
                       name: "defaultColorHexCode",
                       type: "relationship",
                       relationTo: "colors",
                       required: true,
+                      label: "Color",
                       admin: {
+                        condition: (_, siblingData) => !siblingData?.isGradient,
                         components: {
                           Field: SingleColorSelect,
                         },
                       },
+                    },
+
+                    // -----------------------------
+                    // GRADIENT: Gradient Fill Setup
+                    // -----------------------------
+                    {
+                      name: "svgGradientId",
+                      label: "SVG Gradient ID",
+                      type: "text",
+                      required: true,
+                      admin: {
+                        condition: (_, siblingData) =>
+                          siblingData?.isGradient === true,
+                      },
+                    },
+                    {
+                      type: "row",
+                      admin: {
+                        condition: (_, siblingData) =>
+                          siblingData?.isGradient === true,
+                      },
+                      fields: [
+                        {
+                          name: "gradientStartColor",
+                          label: "Gradient Start",
+                          type: "relationship",
+                          relationTo: "colors",
+                          required: true,
+                          admin: {
+                            components: {
+                              Field: SingleColorSelect,
+                            },
+                          },
+                        },
+                        {
+                          name: "gradientEndColor",
+                          label: "Gradient End",
+                          type: "relationship",
+                          relationTo: "colors",
+                          required: true,
+                          admin: {
+                            components: {
+                              Field: SingleColorSelect,
+                            },
+                          },
+                        },
+                      ],
                     },
                   ],
                 },

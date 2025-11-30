@@ -83,9 +83,13 @@ export interface Product {
         patternSvg: string | Media;
         colorOptions?:
           | {
+              isGradient?: boolean | null;
               title: string;
-              svgColorId: string;
-              defaultColorHexCode: string | Color;
+              svgColorId?: string | null;
+              defaultColorHexCode?: (string | null) | Color;
+              svgGradientId?: string | null;
+              gradientStartColor: string | Color;
+              gradientEndColor: string | Color;
               id?: string | null;
             }[]
           | null;
