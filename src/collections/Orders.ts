@@ -196,6 +196,11 @@ const Orders: CollectionConfig = {
           type: "number",
         },
         {
+          name: "patternPreview",
+          type: "upload",
+          relationTo: "media",
+        },
+        {
           name: "pdf",
           type: "upload",
           relationTo: "media",
