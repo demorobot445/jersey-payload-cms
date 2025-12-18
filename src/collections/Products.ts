@@ -413,6 +413,70 @@ const Products: CollectionConfig = {
                 },
               ],
             },
+            {
+              name: "presetTextName",
+              type: "group",
+              // admin: { position: "sidebar" },
+              fields: [
+                {
+                  type: "row",
+                  fields: [
+                    {
+                      admin: { width: "50%" },
+                      label: "X Axis",
+                      name: "positionX",
+                      type: "number",
+                      required: true,
+                    },
+                    {
+                      admin: { width: "50%" },
+                      label: "Y Axis",
+                      name: "positionY",
+                      type: "number",
+                      required: true,
+                    },
+                    {
+                      admin: { width: "50%" },
+                      name: "textSize",
+                      type: "number",
+                      required: true,
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              name: "presetTextNumber",
+              type: "group",
+              // admin: { position: "sidebar" },
+              fields: [
+                {
+                  type: "row",
+                  fields: [
+                    {
+                      admin: { width: "50%" },
+                      label: "X Axis",
+                      name: "positionX",
+                      type: "number",
+                      required: true,
+                    },
+                    {
+                      admin: { width: "50%" },
+                      label: "Y Axis",
+                      name: "positionY",
+                      type: "number",
+                      required: true,
+                    },
+                    {
+                      admin: { width: "50%" },
+                      name: "textSize",
+                      type: "number",
+                      required: true,
+                    },
+                  ],
+                },
+              ],
+            },
           ],
         },
       ],

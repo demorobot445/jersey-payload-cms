@@ -231,7 +231,11 @@ const Orders: CollectionConfig = {
               fields: [
                 { name: "text", type: "text" },
                 { name: "size", type: "number" },
-                { name: "font", type: "text" },
+                {
+                  name: "font",
+                  type: "relationship",
+                  relationTo: "fonts",
+                },
                 { name: "fontColor", type: "text" },
                 { name: "strokeWidth", type: "number" },
                 { name: "strokeColor", type: "text" },
