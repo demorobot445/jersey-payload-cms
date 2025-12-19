@@ -382,10 +382,40 @@ const Products: CollectionConfig = {
               ],
             },
             {
-              name: "presetText",
-              type: "group",
-              // admin: { position: "sidebar" },
+              name: "textPresets",
+              type: "array",
               fields: [
+                {
+                  name: "name",
+                  type: "text",
+                  required: true,
+                },
+                {
+                  name: "selectCameraAngle",
+                  type: "select",
+                  defaultValue: "front",
+                  admin: {
+                    isClearable: false,
+                  },
+                  options: [
+                    {
+                      label: "Front",
+                      value: "front",
+                    },
+                    {
+                      label: "Back",
+                      value: "back",
+                    },
+                    {
+                      label: "Left",
+                      value: "left",
+                    },
+                    {
+                      label: "Right",
+                      value: "right",
+                    },
+                  ],
+                },
                 {
                   type: "row",
                   fields: [
@@ -400,80 +430,15 @@ const Products: CollectionConfig = {
                       admin: { width: "50%" },
                       label: "Y Axis",
                       name: "positionY",
-                      type: "number",
-                      required: true,
-                    },
-                    {
-                      admin: { width: "50%" },
-                      name: "textSize",
                       type: "number",
                       required: true,
                     },
                   ],
                 },
-              ],
-            },
-            {
-              name: "presetTextName",
-              type: "group",
-              // admin: { position: "sidebar" },
-              fields: [
                 {
-                  type: "row",
-                  fields: [
-                    {
-                      admin: { width: "50%" },
-                      label: "X Axis",
-                      name: "positionX",
-                      type: "number",
-                      required: true,
-                    },
-                    {
-                      admin: { width: "50%" },
-                      label: "Y Axis",
-                      name: "positionY",
-                      type: "number",
-                      required: true,
-                    },
-                    {
-                      admin: { width: "50%" },
-                      name: "textSize",
-                      type: "number",
-                      required: true,
-                    },
-                  ],
-                },
-              ],
-            },
-            {
-              name: "presetTextNumber",
-              type: "group",
-              // admin: { position: "sidebar" },
-              fields: [
-                {
-                  type: "row",
-                  fields: [
-                    {
-                      admin: { width: "50%" },
-                      label: "X Axis",
-                      name: "positionX",
-                      type: "number",
-                      required: true,
-                    },
-                    {
-                      admin: { width: "50%" },
-                      label: "Y Axis",
-                      name: "positionY",
-                      type: "number",
-                      required: true,
-                    },
-                    {
-                      admin: { width: "50%" },
-                      name: "textSize",
-                      type: "number",
-                      required: true,
-                    },
-                  ],
+                  name: "textSize",
+                  type: "number",
+                  required: true,
                 },
               ],
             },

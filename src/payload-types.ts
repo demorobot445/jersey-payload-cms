@@ -122,11 +122,16 @@ export interface Product {
     scale: number;
     rotate: number;
   };
-  presetText: {
-    positionX: number;
-    positionY: number;
-    textSize: number;
-  };
+  textPresets?:
+    | {
+        name: string;
+        selectCameraAngle?: ('front' | 'back' | 'left' | 'right') | null;
+        positionX: number;
+        positionY: number;
+        textSize: number;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -226,6 +231,7 @@ export interface Order {
         playerNumber?: string | null;
         quantity?: number | null;
         price?: number | null;
+        patternPreview?: string | Media | null;
         pdf?: string | Media | null;
         customization?: {
           colors?:
@@ -239,7 +245,7 @@ export interface Order {
             | {
                 text?: string | null;
                 size?: number | null;
-                font?: string | null;
+                font?: (string | null) | Font;
                 fontColor?: string | null;
                 strokeWidth?: number | null;
                 strokeColor?: string | null;
